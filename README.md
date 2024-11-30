@@ -1,14 +1,15 @@
 # JackRamp
 
-JackRamp is a decentralized USD off-ramp solution powered by AVS, enabling seamless conversion between crypto and USD. The platform features JackUSD and USDe tokens, with USDe serving as the mining token for JackUSD.
+JackRamp is a decentralized USD off-ramp solution powered by AVS, enabling seamless conversion between crypto and USD. The platform features JackUSD and M0 tokens, with M0 serving as the mining token for JackUSD.
 
 ## 📧 Docs
 
-Project Documentation : [https://kbaji.gitbook.io/enaramp](https://kbaji.gitbook.io/enaramp)
+Project Documentation : [https://kbaji.gitbook.io/jackramp-avs](https://kbaji.gitbook.io/jackramp-avs)
 
 ## 🌟 Features
 
 ### Core Functionality
+- **Mint**: Create new JackUSD tokens through the platform
 - **Withdraw**: Convert JackUSD back to other assets
 - **Swap**: Exchange between different supported tokens
 - **Proof**: List of transactions proof
@@ -73,6 +74,31 @@ import { useReadContract } from 'wagmi'
 import { useWriteContract } from 'wagmi'
 ```
 
+## 📊 Subgraph Integration
+
+### Query Example
+```graphql
+{
+    operators {
+        id
+        address
+        lastActiveTimestamp
+        tasksResponded(orderBy: respondedAt, orderDirection: desc) {
+            receiver
+            requestOfframpId
+            respondedAt
+            status
+            taskCreatedBlock
+            taskIndex
+            transactionHash
+            transactionId
+            createdAt
+            channelId
+        }
+    }
+}
+```
+
 ## 🪙 Tokenomics
 
 ### JackUSD
@@ -80,7 +106,7 @@ import { useWriteContract } from 'wagmi'
 - Backed by crypto collateral
 - Maintains 1:1 USD peg
 
-### USDe Token
+### M0 Token
 - Mining token for JackUSD
 - Used for governance and rewards
 - Earned through platform participation

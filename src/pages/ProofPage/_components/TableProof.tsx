@@ -20,7 +20,7 @@ export default function TableProof() {
         setHasMounted(true);
     }, []);
 
-    const url = 'https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest';
+    const url = process.env.NEXT_PUBLIC_SUBGRAPH_API!;
 
     const { data, isLoading, refetch } = useQuery<QueryData>({
         queryKey: ['data'],

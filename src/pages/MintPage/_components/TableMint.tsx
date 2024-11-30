@@ -19,7 +19,7 @@ export default function TableMint() {
         setHasMounted(true);
     }, []);
 
-    const url = 'https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest';
+    const url = "https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest"
 
     const { data, isLoading, refetch } = useQuery<QueryData>({
         queryKey: ['data'],
@@ -33,7 +33,7 @@ export default function TableMint() {
         refetch();
     };
 
-    const filteredMints = address && data?.mints ? data?.mints.filter((mint: Mint) => mint.user.toLocaleLowerCase() === address.toLocaleLowerCase()) : [];
+    const filteredMints = address && data?.mints || [];
 
     if (!hasMounted) {
         return null;

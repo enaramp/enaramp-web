@@ -106,7 +106,7 @@ export function columns(): ColumnDef<TransactionHistoryRow>[] {
       ),
       cell: ({ row }) => (
         <div className="text-sm">
-          {row.original.conversionRate / 1000} USDe
+          {row.original.conversionRate / 1000} M0
         </div>
       ),
     },

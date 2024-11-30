@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAccount } from "wagmi";
-import { ADDRESS_MOCKERC20 } from "@/constants/config";
+import { ADDRESS_USDE } from "@/constants/config";
 import { useSwap } from "@/hooks/useSwap";
 import { toast } from "sonner";
 import { useInsufficientBalance } from "@/hooks/useInsufficientBalance";
@@ -15,6 +15,7 @@ import { CurrencyInput } from "@/components/card/CurrencyInput";
 import { Method } from "@/components/card/Method";
 import { ProcessingInfo } from "@/components/card/ProcessingInfo";
 import { SuccessDialog } from "@/components/dialog/SuccessDialog";
+import { rpCurrency } from "@/constants/rpCurrency";
 import { ArrowDownUp } from "lucide-react";
 import { bank } from "@/constants/bank";
 import {
@@ -26,7 +27,6 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { usdeCoin } from "@/constants/usde-coin";
 
 interface FormData {
     confirmed: boolean;
@@ -41,7 +41,7 @@ export const SwapForm = () => {
 
     const { insufficientBalance } = useInsufficientBalance(
         address as HexAddress,
-        ADDRESS_MOCKERC20,
+        ADDRESS_USDE,
         amount
     );
 
@@ -61,12 +61,12 @@ export const SwapForm = () => {
     }, []);
 
     useEffect(() => {
-        if (isSwapConfirmed && !isSwapConfirming) {
+        if (isSwapConfirmed && swapHash) {
             setShowSuccessDialog(true);
             form.reset();
             setChannelAccount(""); // Reset channel account on success
         }
-    }, [isSwapConfirming, isSwapConfirmed, form]);
+    }, [isSwapConfirmed, swapHash, form]);
 
     const handleBankSelect = (value: string) => {
         const selected = bank.find((b) => b.name === value);
@@ -106,7 +106,7 @@ export const SwapForm = () => {
 
     const buttonText = useMemo(() => {
         if (isSwapPending || isSwapConfirming) {
-            return "Swapping...";
+            return "Offramping...";
         }
         if (insufficientBalance) {
             return "Insufficient balance";
@@ -117,14 +117,14 @@ export const SwapForm = () => {
         if (!channelAccount.trim()) {
             return "Enter bank number";
         }
-        return "Swap";
+        return "Submit";
     }, [isSwapPending, isSwapConfirming, insufficientBalance, selectedBank, channelAccount]);
 
     return (
         <>
             {(isSwapPending || isSwapConfirming) && (
                 <LoadingTransaction
-                    message={isSwapPending ? "Swapping..." : "Confirming swapping..."}
+                    message={isSwapPending ? "Offramping..." : "Confirming offramp..."}
                 />
             )}
             <Form {...form}>
@@ -153,7 +153,7 @@ export const SwapForm = () => {
                                 <CurrencyInput
                                     value={amount}
                                     onChange={handleAmountChange}
-                                    coin={usdeCoin}
+                                    coin={rpCurrency}
                                     disabled
                                 />
                             </motion.div>
@@ -226,7 +226,7 @@ export const SwapForm = () => {
                 onClose={() => setShowSuccessDialog(false)}
                 txHash={swapHash || ""}
                 amount={amount}
-                processName="Swap"
+                processName="Off Ramp"
             />
         </>
     );

@@ -29,7 +29,7 @@ export const SuccessDialog = ({
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const explorerUrl = `https://holesky.etherscan.io/tx/${txHash}`;
+    const explorerUrl = `https://explorer-ethena-testnet-0.t.conduit.xyz/tx/${txHash}`;
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>

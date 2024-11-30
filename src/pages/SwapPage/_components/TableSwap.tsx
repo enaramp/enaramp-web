@@ -19,7 +19,7 @@ export default function TableSwap() {
         setHasMounted(true);
     }, []);
 
-    const url = 'https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest';
+    const url = "https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest"
 
     const { data, isLoading, refetch } = useQuery<QueryData>({
         queryKey: ['data'],
