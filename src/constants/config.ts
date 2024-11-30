@@ -1,0 +1,3 @@
+export const ADDRESS_JACKUSD = "0xfb3970e6eb88815c485b3531a36d4c8b45db1135"
+export const ADDRESS_MOCKERC20 = "0xc3a60917ede5105adf2096b100af40ddb93b42aa"
+export const USDC_DECIMALS = 6;
