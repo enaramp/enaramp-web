@@ -1,33 +1,28 @@
-# JackRamp
+# Enaramp
 
-JackRamp is a decentralized USD off-ramp solution powered by AVS, enabling seamless conversion between crypto and USD. The platform features JackUSD and M0 tokens, with M0 serving as the mining token for JackUSD.
+Enaramp is a decentralized enaUSD off-ramp solution powered by AVS, enabling seamless conversion between crypto and enaUSD. The platform features enaUSD and USDe tokens, with USDe serving as the mining token for enaUSD.
 
 ## 📧 Docs
 
-Project Documentation : [https://kbaji.gitbook.io/jackramp-avs](https://kbaji.gitbook.io/jackramp-avs)
+Project Documentation : [https://kbaji.gitbook.io/enaramp](https://kbaji.gitbook.io/enaramp)
 
 ## 🌟 Features
 
 ### Core Functionality
-- **Mint**: Create new JackUSD tokens through the platform
-- **Withdraw**: Convert JackUSD back to other assets
 - **Swap**: Exchange between different supported tokens
+- **OffRamp**: Swap digital token into real world money
 - **Proof**: List of transactions proof
 - **Liquidity**: Provide and manage liquidity pools
 
 ### Technical Integration
 - Wallet connection using wagmi
 - Smart contract interaction (read/write) via wagmi hooks
-- Subgraph integration for transaction data querying
-- Real-time data updates through GraphQL
 
 ## 🚀 Tech Stack
 
 - React + Vite
 - TypeScript
 - Wagmi for Web3 integration
-- GraphQL for data querying
-- TheGraph for indexing blockchain data
 
 ## 🔧 Prerequisites
 
@@ -39,8 +34,8 @@ Project Documentation : [https://kbaji.gitbook.io/jackramp-avs](https://kbaji.gi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/jackramp-avs/jackramp-web.git
-cd jackramp-web
+git clone https://github.com/enaramp/enaramp-web.git
+cd enaramp-web
 ```
 
 2. Install dependencies:
@@ -74,40 +69,14 @@ import { useReadContract } from 'wagmi'
 import { useWriteContract } from 'wagmi'
 ```
 
-## 📊 Subgraph Integration
-
-### Query Example
-```graphql
-{
-    operators {
-        id
-        address
-        lastActiveTimestamp
-        tasksResponded(orderBy: respondedAt, orderDirection: desc) {
-            receiver
-            requestOfframpId
-            respondedAt
-            status
-            taskCreatedBlock
-            taskIndex
-            transactionHash
-            transactionId
-            createdAt
-            channelId
-        }
-    }
-}
-```
-
 ## 🪙 Tokenomics
 
-### JackUSD
-- Decentralized USD-pegged stablecoin
-- Backed by crypto collateral
-- Maintains 1:1 USD peg
+### enaUSD
+- Decentralized enaUSD
+- Maintains 1:1 enaUSD peg
 
-### M0 Token
-- Mining token for JackUSD
+### USDe Token
+- Mining token for enaUSD
 - Used for governance and rewards
 - Earned through platform participation
 
